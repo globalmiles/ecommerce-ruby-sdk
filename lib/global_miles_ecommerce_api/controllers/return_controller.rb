@@ -15,19 +15,10 @@ module GlobalMilesEcommerceApi
     end
 
     # This endpoint allows to start a return for a specific order.
-    # @param [String] accept Required parameter: It advertises which content
-    # type is able to understand.
-    # @param [String] content_type Required parameter: It tells the client what
-    # the content type of the returned.
-    # @param [String] authorization Required parameter: It includes OAuth2
-    # token.
     # @param [StartReturnRequest] body Required parameter: The body of the
     # request.
     # @return StartReturnResponse response from the API call
-    def create_start_return(accept,
-                            content_type,
-                            authorization,
-                            body)
+    def create_start_return(body)
       # Prepare query url.
       _query_builder = Configuration.get_base_uri
       _query_builder << '/v2/ecommerce/returns'
@@ -35,9 +26,8 @@ module GlobalMilesEcommerceApi
 
       # Prepare headers.
       _headers = {
-        'Accept' => accept,
-        'Content-Type' => content_type,
-        'Authorization' => authorization
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8'
       }
 
       # Prepare and execute HttpRequest.
@@ -56,19 +46,10 @@ module GlobalMilesEcommerceApi
     end
 
     # This endpoint allows to complete a return.
-    # @param [String] accept Required parameter: It advertises which content
-    # type is able to understand.
-    # @param [String] content_type Required parameter: It tells the client what
-    # the content type of the returned.
-    # @param [String] authorization Required parameter: It includes OAuth2
-    # token.
     # @param [CompleteReturnRequest] body Required parameter: The body of the
     # request.
     # @return Response response from the API call
-    def update_complete_return(accept,
-                               content_type,
-                               authorization,
-                               body)
+    def update_complete_return(body)
       # Prepare query url.
       _query_builder = Configuration.get_base_uri
       _query_builder << '/v2/ecommerce/returns'
@@ -76,9 +57,8 @@ module GlobalMilesEcommerceApi
 
       # Prepare headers.
       _headers = {
-        'Accept' => accept,
-        'Content-Type' => content_type,
-        'Authorization' => authorization
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8'
       }
 
       # Prepare and execute HttpRequest.
@@ -97,19 +77,10 @@ module GlobalMilesEcommerceApi
     end
 
     # This endpoint allows to cancel a return.
-    # @param [String] accept Required parameter: It advertises which content
-    # type is able to understand.
-    # @param [String] content_type Required parameter: It tells the client what
-    # the content type of the returned.
-    # @param [String] authorization Required parameter: It includes OAuth2
-    # token.
     # @param [CancelReturnRequest] body Required parameter: The body of the
     # request.
     # @return Response response from the API call
-    def delete_cancel_return(accept,
-                             content_type,
-                             authorization,
-                             body)
+    def delete_cancel_return(body)
       # Prepare query url.
       _query_builder = Configuration.get_base_uri
       _query_builder << '/v2/ecommerce/returns'
@@ -117,9 +88,8 @@ module GlobalMilesEcommerceApi
 
       # Prepare headers.
       _headers = {
-        'Accept' => accept,
-        'Content-Type' => content_type,
-        'Authorization' => authorization
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8'
       }
 
       # Prepare and execute HttpRequest.

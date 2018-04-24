@@ -26,8 +26,8 @@ module GlobalMilesEcommerceApi
       # Gitf Card
       GIFT_CARD = 'gift_card'.freeze,
 
-      # Pay with miles / points provided by Global Miles
-      POINT_PAYMENT = 'point_payment'.freeze,
+      # Pay with miles provided by Global Miles
+      MILE_PAYMENT = 'mile_payment'.freeze,
 
       # Other
       OTHER = 'other'.freeze

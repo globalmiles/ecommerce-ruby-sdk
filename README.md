@@ -185,43 +185,37 @@ end
 
 ## <a name="list_of_controllers"></a>List of Controllers
 
-* [PayWithMilesPointsController](#pay_with_miles_points_controller)
-* [EarnMilesPointsController](#earn_miles_points_controller)
+* [PayWithMilesController](#pay_with_miles_controller)
+* [EarnMilesController](#earn_miles_controller)
 * [AuthenticationController](#authentication_controller)
 * [ReturnController](#return_controller)
 
-## <a name="pay_with_miles_points_controller"></a>![Class: ](https://apidocs.io/img/class.png ".PayWithMilesPointsController") PayWithMilesPointsController
+## <a name="pay_with_miles_controller"></a>![Class: ](https://apidocs.io/img/class.png ".PayWithMilesController") PayWithMilesController
 
 ### Get singleton instance
 
-The singleton instance of the ``` PayWithMilesPointsController ``` class can be accessed from the API Client.
+The singleton instance of the ``` PayWithMilesController ``` class can be accessed from the API Client.
 
 ```ruby
-payWithMilesPoints_controller = client.pay_with_miles_points
+payWithMiles_controller = client.pay_with_miles
 ```
 
-### <a name="list_point_payments"></a>![Method: ](https://apidocs.io/img/method.png ".PayWithMilesPointsController.list_point_payments") list_point_payments
+### <a name="list_mile_payments"></a>![Method: ](https://apidocs.io/img/method.png ".PayWithMilesController.list_mile_payments") list_mile_payments
 
-> This endpoint allows to get list of payments. In order to get detailed payment history and reconciliation you can use this API.
+> This endpoint allows to get list of payments. In order to get detailed payment history and reconciliation you can use this endpoint.
 
 
 ```ruby
-def list_point_payments(accept,
-                            content_type,
-                            authorization,
-                            store_code,
-                            filter_by_created_at,
-                            filter_by_status = nil,
-                            sort_by = nil); end
+def list_mile_payments(store_code,
+                           filter_by_created_at,
+                           filter_by_status = nil,
+                           sort_by = nil); end
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| content_type |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
-| authorization |  ``` Required ```  | It includes OAuth2 token. |
 | store_code |  ``` Required ```  | An identifier for online store. |
 | filter_by_created_at |  ``` Required ```  | Filter for created_at field. It is accepted a valid date range value. The format is YYYY-MM-DD...YYYY-MM-DD. |
 | filter_by_status |  ``` Optional ```  | Filter for status field. It is accepted a valid status value of payment. |
@@ -231,237 +225,180 @@ def list_point_payments(accept,
 #### Example Usage
 
 ```ruby
-accept = 'application/json'
-content_type = 'application/json'
-authorization = 'Authorization'
 store_code = 'StoreCode'
 filter_by_created_at = 'FilterByCreatedAt'
 filter_by_status = 'FilterByStatus'
 sort_by = 'SortBy'
 
-result = payWithMilesPoints_controller.list_point_payments(accept, content_type, authorization, store_code, filter_by_created_at, filter_by_status, sort_by)
+result = payWithMiles_controller.list_mile_payments(store_code, filter_by_created_at, filter_by_status, sort_by)
 
 ```
 
 
-### <a name="create_refund_point_payment"></a>![Method: ](https://apidocs.io/img/method.png ".PayWithMilesPointsController.create_refund_point_payment") create_refund_point_payment
+### <a name="create_refund_mile_payment"></a>![Method: ](https://apidocs.io/img/method.png ".PayWithMilesController.create_refund_mile_payment") create_refund_mile_payment
 
 > This endpoint allows to refund a payment.
 
 
 ```ruby
-def create_refund_point_payment(accept,
-                                    content_type,
-                                    authorization,
-                                    body); end
+def create_refund_mile_payment(body); end
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| content_type |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
-| authorization |  ``` Required ```  | It includes OAuth2 token. |
 | body |  ``` Required ```  | The body of the request. |
 
 
 #### Example Usage
 
 ```ruby
-accept = 'application/json'
-content_type = 'application/json'
-authorization = 'Authorization'
-body = RefundPointPaymentRequest.new
+body = RefundMilePaymentRequest.new
 
-result = payWithMilesPoints_controller.create_refund_point_payment(accept, content_type, authorization, body)
+result = payWithMiles_controller.create_refund_mile_payment(body)
 
 ```
 
 
-### <a name="delete_cancel_point_payment"></a>![Method: ](https://apidocs.io/img/method.png ".PayWithMilesPointsController.delete_cancel_point_payment") delete_cancel_point_payment
+### <a name="delete_cancel_mile_payment"></a>![Method: ](https://apidocs.io/img/method.png ".PayWithMilesController.delete_cancel_mile_payment") delete_cancel_mile_payment
 
 > This endpoint allows to cancel a payment.
 
 
 ```ruby
-def delete_cancel_point_payment(accept,
-                                    content_type,
-                                    authorization,
-                                    body); end
+def delete_cancel_mile_payment(body); end
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| content_type |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
-| authorization |  ``` Required ```  | It includes OAuth2 token. |
 | body |  ``` Required ```  | The body of the request. |
 
 
 #### Example Usage
 
 ```ruby
-accept = 'application/json'
-content_type = 'application/json'
-authorization = 'Authorization'
-body = CancelPointPaymentRequest.new
+body = CancelMilePaymentRequest.new
 
-result = payWithMilesPoints_controller.delete_cancel_point_payment(accept, content_type, authorization, body)
+result = payWithMiles_controller.delete_cancel_mile_payment(body)
 
 ```
 
 
-### <a name="update_complete_point_payment"></a>![Method: ](https://apidocs.io/img/method.png ".PayWithMilesPointsController.update_complete_point_payment") update_complete_point_payment
+### <a name="update_complete_mile_payment"></a>![Method: ](https://apidocs.io/img/method.png ".PayWithMilesController.update_complete_mile_payment") update_complete_mile_payment
 
 > This endpoint allows to complete a payment.
 
 
 ```ruby
-def update_complete_point_payment(accept,
-                                      content_type,
-                                      authorization,
-                                      body); end
+def update_complete_mile_payment(body); end
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| content_type |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
-| authorization |  ``` Required ```  | It includes OAuth2 token. |
 | body |  ``` Required ```  | The body of the request. |
 
 
 #### Example Usage
 
 ```ruby
-accept = 'application/json'
-content_type = 'application/json'
-authorization = 'Authorization'
-body = CompletePointPaymentRequest.new
+body = CompleteMilePaymentRequest.new
 
-result = payWithMilesPoints_controller.update_complete_point_payment(accept, content_type, authorization, body)
+result = payWithMiles_controller.update_complete_mile_payment(body)
 
 ```
 
 
-### <a name="create_start_point_payment"></a>![Method: ](https://apidocs.io/img/method.png ".PayWithMilesPointsController.create_start_point_payment") create_start_point_payment
+### <a name="create_start_mile_payment"></a>![Method: ](https://apidocs.io/img/method.png ".PayWithMilesController.create_start_mile_payment") create_start_mile_payment
 
-> After successful authentication and retrieving needed token,this endpoint allows to start a payment transaction. To be able to complete whole sale process successfully  also check "Complete Point Payment endpoint" please.
+> After successful authentication and retrieving needed token, this endpoint allows to start a payment transaction. To be able to complete whole payment process successfully also check "Complete Mile Payment endpoint" please.
 
 
 ```ruby
-def create_start_point_payment(accept,
-                                   content_type,
-                                   authorization,
-                                   body); end
+def create_start_mile_payment(body); end
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| content_type |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
-| authorization |  ``` Required ```  | It includes OAuth2 token. |
 | body |  ``` Required ```  | The body of the request. |
 
 
 #### Example Usage
 
 ```ruby
-accept = 'application/json'
-content_type = 'application/json'
-authorization = 'Authorization'
-body = StartPointPaymentRequest.new
+body = StartMilePaymentRequest.new
 
-result = payWithMilesPoints_controller.create_start_point_payment(accept, content_type, authorization, body)
+result = payWithMiles_controller.create_start_mile_payment(body)
 
 ```
 
 
 [Back to List of Controllers](#list_of_controllers)
 
-## <a name="earn_miles_points_controller"></a>![Class: ](https://apidocs.io/img/class.png ".EarnMilesPointsController") EarnMilesPointsController
+## <a name="earn_miles_controller"></a>![Class: ](https://apidocs.io/img/class.png ".EarnMilesController") EarnMilesController
 
 ### Get singleton instance
 
-The singleton instance of the ``` EarnMilesPointsController ``` class can be accessed from the API Client.
+The singleton instance of the ``` EarnMilesController ``` class can be accessed from the API Client.
 
 ```ruby
-earnMilesPoints_controller = client.earn_miles_points
+earnMiles_controller = client.earn_miles
 ```
 
-### <a name="create_order_info"></a>![Method: ](https://apidocs.io/img/method.png ".EarnMilesPointsController.create_order_info") create_order_info
+### <a name="create_order_info"></a>![Method: ](https://apidocs.io/img/method.png ".EarnMilesController.create_order_info") create_order_info
 
-> This endpoint allows to create an order for earn a miles / points. It may also include discounts and payments.
+> This endpoint allows to create an order for earn miles. It may also include discounts and payments.
 
 
 ```ruby
-def create_order_info(accept,
-                          content_type,
-                          authorization,
-                          body); end
+def create_order_info(body); end
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| content_type |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
-| authorization |  ``` Required ```  | It includes OAuth2 token. |
 | body |  ``` Required ```  | The body of the request. |
 
 
 #### Example Usage
 
 ```ruby
-accept = 'application/json'
-content_type = 'application/json'
-authorization = 'Authorization'
 body = OrderRequest.new
 
-result = earnMilesPoints_controller.create_order_info(accept, content_type, authorization, body)
+result = earnMiles_controller.create_order_info(body)
 
 ```
 
 
-### <a name="create_cart_info"></a>![Method: ](https://apidocs.io/img/method.png ".EarnMilesPointsController.create_cart_info") create_cart_info
+### <a name="create_cart_info"></a>![Method: ](https://apidocs.io/img/method.png ".EarnMilesController.create_cart_info") create_cart_info
 
-> This endpoint allows to get available amount of money, based on miles / points of user and their discounts which is based on cart or items.
+> This endpoint allows to get available amount of money, based on miles of user and their discounts which is based on cart or items.
 
 
 ```ruby
-def create_cart_info(accept,
-                         content_type,
-                         authorization,
-                         body); end
+def create_cart_info(body); end
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| content_type |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
-| authorization |  ``` Required ```  | It includes OAuth2 token. |
 | body |  ``` Required ```  | The body of the request. |
 
 
 #### Example Usage
 
 ```ruby
-accept = 'application/json'
-content_type = 'application/json'
-authorization = 'Bearer {{auth_token}}'
 body = CartRequest.new
 
-result = earnMilesPoints_controller.create_cart_info(accept, content_type, authorization, body)
+result = earnMiles_controller.create_cart_info(body)
 
 ```
 
@@ -531,31 +468,22 @@ mreturn_controller = client.mreturn
 
 
 ```ruby
-def create_start_return(accept,
-                            content_type,
-                            authorization,
-                            body); end
+def create_start_return(body); end
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| content_type |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
-| authorization |  ``` Required ```  | It includes OAuth2 token. |
 | body |  ``` Required ```  | The body of the request. |
 
 
 #### Example Usage
 
 ```ruby
-accept = 'application/json'
-content_type = 'application/json'
-authorization = 'Authorization'
 body = StartReturnRequest.new
 
-result = mreturn_controller.create_start_return(accept, content_type, authorization, body)
+result = mreturn_controller.create_start_return(body)
 
 ```
 
@@ -566,31 +494,22 @@ result = mreturn_controller.create_start_return(accept, content_type, authorizat
 
 
 ```ruby
-def update_complete_return(accept,
-                               content_type,
-                               authorization,
-                               body); end
+def update_complete_return(body); end
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| content_type |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
-| authorization |  ``` Required ```  | It includes OAuth2 token. |
 | body |  ``` Required ```  | The body of the request. |
 
 
 #### Example Usage
 
 ```ruby
-accept = 'application/json'
-content_type = 'application/json'
-authorization = 'Authorization'
 body = CompleteReturnRequest.new
 
-result = mreturn_controller.update_complete_return(accept, content_type, authorization, body)
+result = mreturn_controller.update_complete_return(body)
 
 ```
 
@@ -601,31 +520,22 @@ result = mreturn_controller.update_complete_return(accept, content_type, authori
 
 
 ```ruby
-def delete_cancel_return(accept,
-                             content_type,
-                             authorization,
-                             body); end
+def delete_cancel_return(body); end
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accept |  ``` Required ```  ``` DefaultValue ```  | It advertises which content type is able to understand. |
-| content_type |  ``` Required ```  ``` DefaultValue ```  | It tells the client what the content type of the returned. |
-| authorization |  ``` Required ```  | It includes OAuth2 token. |
 | body |  ``` Required ```  | The body of the request. |
 
 
 #### Example Usage
 
 ```ruby
-accept = 'application/json'
-content_type = 'application/json'
-authorization = 'Authorization'
 body = CancelReturnRequest.new
 
-result = mreturn_controller.delete_cancel_return(accept, content_type, authorization, body)
+result = mreturn_controller.delete_cancel_return(body)
 
 ```
 

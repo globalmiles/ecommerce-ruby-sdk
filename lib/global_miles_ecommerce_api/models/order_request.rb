@@ -20,8 +20,7 @@ module GlobalMilesEcommerceApi
     # @return [Order]
     attr_accessor :order
 
-    # It specifies how many days later the miles / points should be given to the
-    # user.
+    # It specifies how many days later the miles should be given to the user.
     # @return [Integer]
     attr_accessor :shift_allowance
 
