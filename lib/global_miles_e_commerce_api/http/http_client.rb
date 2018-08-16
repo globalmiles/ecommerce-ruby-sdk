@@ -38,6 +38,16 @@ module GlobalMilesECommerceApi
                       headers: headers)
     end
 
+    # Get a HEAD HttpRequest object.
+    # @param [String] The URL to send the request to.
+    # @param [Hash, Optional] The headers for the HTTP Request.
+    def head(query_url,
+             headers: {})
+      HttpRequest.new(HttpMethodEnum::HEAD,
+                      query_url,
+                      headers: headers)
+    end
+
     # Get a POST HttpRequest object.
     # @param [String] The URL to send the request to.
     # @param [Hash, Optional] The headers for the HTTP Request.

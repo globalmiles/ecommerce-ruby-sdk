@@ -2,8 +2,12 @@
 # ( https://apimatic.io ).
 
 module GlobalMilesECommerceApi
-  # Representing an order.
-  class Order < BaseModel
+  # Representing an order in list result.
+  class BasicOrderResult < BaseModel
+    # A token represents an order object from Global Miles system.
+    # @return [String]
+    attr_accessor :transaction_token
+
     # The ID of the transaction that represents the order.
     # @return [String]
     attr_accessor :transaction_id
@@ -11,6 +15,18 @@ module GlobalMilesECommerceApi
     # The date and time when the order was completed in partner side.
     # @return [String]
     attr_accessor :completed_at
+
+    # Create date time of order. The format is ISO 8601 date and time.
+    # @return [String]
+    attr_accessor :created_at
+
+    # Last update date time of order. The format is ISO 8601 date and time.
+    # @return [String]
+    attr_accessor :updated_at
+
+    # The status of order.
+    # @return [OrderStatusEnum]
+    attr_accessor :status
 
     # Total value of all order items without tax.
     # @return [Float]
@@ -28,51 +44,42 @@ module GlobalMilesECommerceApi
     # @return [String]
     attr_accessor :currency
 
-    # An array of order items.
-    # @return [List of OrderItem]
-    attr_accessor :items
-
-    # An array of discount items.
-    # @return [List of DiscountItem]
-    attr_accessor :discounts
-
-    # An array of payment items.
-    # @return [List of PaymentItem]
-    attr_accessor :payments
-
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
+      @_hash['transaction_token'] = 'transaction_token'
       @_hash['transaction_id'] = 'transaction_id'
       @_hash['completed_at'] = 'completed_at'
+      @_hash['created_at'] = 'created_at'
+      @_hash['updated_at'] = 'updated_at'
+      @_hash['status'] = 'status'
       @_hash['subtotal'] = 'subtotal'
       @_hash['tax'] = 'tax'
       @_hash['total'] = 'total'
       @_hash['currency'] = 'currency'
-      @_hash['items'] = 'items'
-      @_hash['discounts'] = 'discounts'
-      @_hash['payments'] = 'payments'
       @_hash
     end
 
-    def initialize(transaction_id = nil,
+    def initialize(transaction_token = nil,
+                   transaction_id = nil,
                    completed_at = nil,
+                   created_at = nil,
+                   updated_at = nil,
+                   status = nil,
                    subtotal = nil,
                    tax = nil,
                    total = nil,
-                   currency = nil,
-                   items = nil,
-                   discounts = nil,
-                   payments = nil)
+                   currency = nil)
+      @transaction_token = transaction_token
       @transaction_id = transaction_id
       @completed_at = completed_at
+      @created_at = created_at
+      @updated_at = updated_at
+      @status = status
       @subtotal = subtotal
       @tax = tax
       @total = total
       @currency = currency
-      @items = items
-      @discounts = discounts
-      @payments = payments
     end
 
     # Creates an instance of the object from a hash.
@@ -80,47 +87,28 @@ module GlobalMilesECommerceApi
       return nil unless hash
 
       # Extract variables from the hash.
+      transaction_token = hash['transaction_token']
       transaction_id = hash['transaction_id']
       completed_at = hash['completed_at']
+      created_at = hash['created_at']
+      updated_at = hash['updated_at']
+      status = hash['status']
       subtotal = hash['subtotal']
       tax = hash['tax']
       total = hash['total']
       currency = hash['currency']
-      # Parameter is an array, so we need to iterate through it
-      items = nil
-      unless hash['items'].nil?
-        items = []
-        hash['items'].each do |structure|
-          items << (OrderItem.from_hash(structure) if structure)
-        end
-      end
-      # Parameter is an array, so we need to iterate through it
-      discounts = nil
-      unless hash['discounts'].nil?
-        discounts = []
-        hash['discounts'].each do |structure|
-          discounts << (DiscountItem.from_hash(structure) if structure)
-        end
-      end
-      # Parameter is an array, so we need to iterate through it
-      payments = nil
-      unless hash['payments'].nil?
-        payments = []
-        hash['payments'].each do |structure|
-          payments << (PaymentItem.from_hash(structure) if structure)
-        end
-      end
 
       # Create object from extracted values.
-      Order.new(transaction_id,
-                completed_at,
-                subtotal,
-                tax,
-                total,
-                currency,
-                items,
-                discounts,
-                payments)
+      BasicOrderResult.new(transaction_token,
+                           transaction_id,
+                           completed_at,
+                           created_at,
+                           updated_at,
+                           status,
+                           subtotal,
+                           tax,
+                           total,
+                           currency)
     end
   end
 end

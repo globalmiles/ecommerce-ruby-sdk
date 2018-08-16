@@ -38,7 +38,7 @@ module GlobalMilesECommerceApi
     # All the environments the SDK can run in.
     @environments = {
       Environment::CLOUD => {
-        Server::DEFAULT => 'https://test1.api.globalmiles.com'
+        Server::DEFAULT => 'https://api.sandbox.globalmiles.com'
       }
     }
 

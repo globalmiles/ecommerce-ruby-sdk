@@ -18,8 +18,8 @@ module GlobalMilesECommerceApi
       @_hash
     end
 
-    def initialize(result = nil,
-                   status = nil,
+    def initialize(status = nil,
+                   result = nil,
                    message = nil)
       @result = result
 
@@ -33,13 +33,13 @@ module GlobalMilesECommerceApi
       return nil unless hash
 
       # Extract variables from the hash.
-      result = StartReturnResult.from_hash(hash['result']) if hash['result']
       status = hash['status']
+      result = StartReturnResult.from_hash(hash['result']) if hash['result']
       message = hash['message']
 
       # Create object from extracted values.
-      StartReturnResponse.new(result,
-                              status,
+      StartReturnResponse.new(status,
+                              result,
                               message)
     end
   end

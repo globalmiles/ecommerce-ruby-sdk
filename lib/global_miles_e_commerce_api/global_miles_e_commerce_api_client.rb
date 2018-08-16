@@ -4,16 +4,10 @@
 module GlobalMilesECommerceApi
   #  global_miles_e_commerce_api client class.
   class GlobalMilesECommerceApiClient
-    # Singleton access to pay_with_miles_points controller.
-    # @return [PayWithMilesPointsController] Returns the controller instance.
-    def pay_with_miles_points
-      PayWithMilesPointsController.instance
-    end
-
-    # Singleton access to transaction controller.
-    # @return [TransactionController] Returns the controller instance.
-    def transaction
-      TransactionController.instance
+    # Singleton access to earn_miles controller.
+    # @return [EarnMilesController] Returns the controller instance.
+    def earn_miles
+      EarnMilesController.instance
     end
 
     # Singleton access to authentication controller.
@@ -26,6 +20,12 @@ module GlobalMilesECommerceApi
     # @return [ReturnController] Returns the controller instance.
     def mreturn
       ReturnController.instance
+    end
+
+    # Singleton access to pay_with_miles controller.
+    # @return [PayWithMilesController] Returns the controller instance.
+    def pay_with_miles
+      PayWithMilesController.instance
     end
 
     # Singleton access to o_auth_authorization controller.

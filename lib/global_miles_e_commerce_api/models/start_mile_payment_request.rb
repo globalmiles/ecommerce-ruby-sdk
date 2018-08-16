@@ -2,8 +2,8 @@
 # ( https://apimatic.io ).
 
 module GlobalMilesECommerceApi
-  # Request of order object.
-  class OrderRequest < BaseModel
+  # Request of payment for start action.
+  class StartMilePaymentRequest < BaseModel
     # An identifier for online store.
     # @return [String]
     attr_accessor :store_code
@@ -12,25 +12,25 @@ module GlobalMilesECommerceApi
     # @return [String]
     attr_accessor :user_token
 
-    # A complex object for order.
-    # @return [Order]
-    attr_accessor :order
+    # An amount of payment.
+    # @return [Amount]
+    attr_accessor :amount
 
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['store_code'] = 'store_code'
       @_hash['user_token'] = 'user_token'
-      @_hash['order'] = 'order'
+      @_hash['amount'] = 'amount'
       @_hash
     end
 
     def initialize(store_code = nil,
                    user_token = nil,
-                   order = nil)
+                   amount = nil)
       @store_code = store_code
       @user_token = user_token
-      @order = order
+      @amount = amount
     end
 
     # Creates an instance of the object from a hash.
@@ -40,12 +40,12 @@ module GlobalMilesECommerceApi
       # Extract variables from the hash.
       store_code = hash['store_code']
       user_token = hash['user_token']
-      order = Order.from_hash(hash['order']) if hash['order']
+      amount = Amount.from_hash(hash['amount']) if hash['amount']
 
       # Create object from extracted values.
-      OrderRequest.new(store_code,
-                       user_token,
-                       order)
+      StartMilePaymentRequest.new(store_code,
+                                  user_token,
+                                  amount)
     end
   end
 end

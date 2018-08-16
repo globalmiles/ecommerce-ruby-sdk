@@ -4,10 +4,10 @@
 require_relative 'response'
 
 module GlobalMilesECommerceApi
-  # Response object of order.
-  class OrderResponse < Response
+  # Response object of order for list action.
+  class ListOrderResponse < Response
     # Result object of the response.
-    # @return [OrderResult]
+    # @return [List of BasicOrderResult]
     attr_accessor :result
 
     # A mapping from model property names to API property names.
@@ -34,13 +34,20 @@ module GlobalMilesECommerceApi
 
       # Extract variables from the hash.
       status = hash['status']
-      result = OrderResult.from_hash(hash['result']) if hash['result']
+      # Parameter is an array, so we need to iterate through it
+      result = nil
+      unless hash['result'].nil?
+        result = []
+        hash['result'].each do |structure|
+          result << (BasicOrderResult.from_hash(structure) if structure)
+        end
+      end
       message = hash['message']
 
       # Create object from extracted values.
-      OrderResponse.new(status,
-                        result,
-                        message)
+      ListOrderResponse.new(status,
+                            result,
+                            message)
     end
   end
 end
