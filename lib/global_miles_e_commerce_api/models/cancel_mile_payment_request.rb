@@ -2,35 +2,28 @@
 # ( https://apimatic.io ).
 
 module GlobalMilesECommerceApi
-  # Request of the cart object.
-  class CartRequest < BaseModel
-    # A token that is representing a Global Miles user for the current session.
-    # @return [String]
-    attr_accessor :user_token
-
+  # Request of payment for cancel action.
+  class CancelMilePaymentRequest < BaseModel
     # An identifier for online store.
     # @return [String]
     attr_accessor :store_code
 
-    # A complex object for cart.
-    # @return [Cart]
-    attr_accessor :cart
+    # A token represents a payment object for provisioning.
+    # @return [String]
+    attr_accessor :payment_provision_token
 
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
-      @_hash['user_token'] = 'user_token'
       @_hash['store_code'] = 'store_code'
-      @_hash['cart'] = 'cart'
+      @_hash['payment_provision_token'] = 'payment_provision_token'
       @_hash
     end
 
-    def initialize(user_token = nil,
-                   store_code = nil,
-                   cart = nil)
-      @user_token = user_token
+    def initialize(store_code = nil,
+                   payment_provision_token = nil)
       @store_code = store_code
-      @cart = cart
+      @payment_provision_token = payment_provision_token
     end
 
     # Creates an instance of the object from a hash.
@@ -38,14 +31,12 @@ module GlobalMilesECommerceApi
       return nil unless hash
 
       # Extract variables from the hash.
-      user_token = hash['user_token']
       store_code = hash['store_code']
-      cart = Cart.from_hash(hash['cart']) if hash['cart']
+      payment_provision_token = hash['payment_provision_token']
 
       # Create object from extracted values.
-      CartRequest.new(user_token,
-                      store_code,
-                      cart)
+      CancelMilePaymentRequest.new(store_code,
+                                   payment_provision_token)
     end
   end
 end

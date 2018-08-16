@@ -25,6 +25,9 @@ Lint/UnderscorePrefixedVariableName:
 Naming/AccessorMethodName:
   Enabled: false
 
+Style/AsciiComments:
+  Enabled: false
+
 AllCops:
   Exclude:
     - './test/**/*'

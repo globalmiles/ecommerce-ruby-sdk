@@ -2,23 +2,17 @@
 # ( https://apimatic.io ).
 
 module GlobalMilesECommerceApi
-  # A payment status.
-  class PaymentStatusEnum
-    PAYMENT_STATUS_ENUM = [
+  # A return status.
+  class ReturnStatusEnum
+    RETURN_STATUS_ENUM = [
       # Started
       STARTED = 'started'.freeze,
-
-      # Completed
-      COMPLETED = 'completed'.freeze,
 
       # Cancelled
       CANCELLED = 'cancelled'.freeze,
 
-      # Refunded
-      REFUNDED = 'refunded'.freeze,
-
-      # Used
-      USED = 'used'.freeze
+      # Completed
+      COMPLETED = 'completed'.freeze
     ].freeze
   end
 end

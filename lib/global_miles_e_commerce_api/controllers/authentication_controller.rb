@@ -15,7 +15,12 @@ module GlobalMilesECommerceApi
     end
 
     # An access token will allow you to make requests for the system. We support
-    # only one type of token: client_credentials
+    # only one type of token: client_credentials.
+    # You can try this API with configuring client parameters in Console Tab
+    # below. Test OAuthClientId is
+    # b30359c21700fd6f2b91154adcb7b37bab3e7e0a33e22682e5dd149d7a6ac4df and
+    # OAuthClientSecret is
+    # 4bc4335faad41d6a23cd059e495005f00496a64e34e6187b1d72695a8debd28c
     # @param [String] accept Required parameter: It advertises which content
     # type is able to understand.
     # @param [String] content_type Required parameter: It tells the client what

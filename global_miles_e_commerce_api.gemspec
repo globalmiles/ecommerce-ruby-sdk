@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'global_miles_e_commerce_api'
-  s.version = '2.0.0'
+  s.version = '2.1.0'
   s.summary = 'global_miles_e_commerce_api'
   s.description = 'API for E-commerce Partners. This document includes Cart, Discount, Payment, Order and Return related endpoints provided by Global Miles.'
   s.authors = ['APIMatic SDK Generator']

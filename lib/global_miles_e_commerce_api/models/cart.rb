@@ -4,10 +4,6 @@
 module GlobalMilesECommerceApi
   # Representing a shopping cart.
   class Cart < BaseModel
-    # ISO-4217 3-letter currency code.
-    # @return [String]
-    attr_accessor :currency
-
     # Total value of all cart items without tax.
     # @return [Float]
     attr_accessor :subtotal
@@ -20,6 +16,10 @@ module GlobalMilesECommerceApi
     # @return [Float]
     attr_accessor :total
 
+    # ISO-4217 3-letter currency code.
+    # @return [String]
+    attr_accessor :currency
+
     # An array of cart items.
     # @return [List of CartItem]
     attr_accessor :items
@@ -27,23 +27,23 @@ module GlobalMilesECommerceApi
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
-      @_hash['currency'] = 'currency'
       @_hash['subtotal'] = 'subtotal'
       @_hash['tax'] = 'tax'
       @_hash['total'] = 'total'
+      @_hash['currency'] = 'currency'
       @_hash['items'] = 'items'
       @_hash
     end
 
-    def initialize(currency = nil,
-                   subtotal = nil,
+    def initialize(subtotal = nil,
                    tax = nil,
                    total = nil,
+                   currency = nil,
                    items = nil)
-      @currency = currency
       @subtotal = subtotal
       @tax = tax
       @total = total
+      @currency = currency
       @items = items
     end
 
@@ -52,10 +52,10 @@ module GlobalMilesECommerceApi
       return nil unless hash
 
       # Extract variables from the hash.
-      currency = hash['currency']
       subtotal = hash['subtotal']
       tax = hash['tax']
       total = hash['total']
+      currency = hash['currency']
       # Parameter is an array, so we need to iterate through it
       items = nil
       unless hash['items'].nil?
@@ -66,10 +66,10 @@ module GlobalMilesECommerceApi
       end
 
       # Create object from extracted values.
-      Cart.new(currency,
-               subtotal,
+      Cart.new(subtotal,
                tax,
                total,
+               currency,
                items)
     end
   end
